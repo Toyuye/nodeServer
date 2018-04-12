@@ -1,0 +1,191 @@
+@charset "utf-8";
+
+/*公共的*/
+
+* { margin:0; padding:0; }
+body {
+	font:12px Arial;
+	background:#f7f7f7;
+}
+
+a { text-decoration:none; }
+
+li { list-style:none; }
+
+.box {
+	width:940px;
+	margin:0 auto;
+}
+
+.left {
+	display:inline;
+	float:left;	
+}
+
+.right {
+	display:inline;
+	float:right;	
+}
+
+.clear {
+	clear:both;	
+}
+
+/*头*/
+#header {
+	height:193px;
+	border-top:4px solid #010035;
+	background:url(../images/blog_hd_bg.png) repeat-x;
+}
+
+#logo, #logo a {
+	font-weight:normal;
+	margin-top:35px;
+	font-size:42px;
+	color:#fff;	
+}
+
+#logo span {
+	font-size:14px;
+	font-style:italic;
+	font-family:'Microsoft Yahei';
+}
+
+.nav {
+	height:49px;
+	margin-top:61px;
+	background-color:#000040;	
+}
+
+.nav-ul {
+	overflow:hidden;
+}
+
+.nav-ul li {
+	display:inline;
+	float:left;
+	margin-left:-1px;
+}
+
+.nav-ul a {
+	display:block;
+	width:156px;
+	height:49px;
+	line-height:49px;
+	text-align:center;
+	border-left:1px solid #4e9ce9;
+	color:#fff;
+	text-decoration:none;
+}
+
+.nav-ul a:hover {
+	background:#4e9ce9;
+	
+}
+
+/*尾部*/
+
+#footer {
+	height:40px;
+	padding-top:22px;
+	border-top:1px solid #dedede;
+	background-color:#ececec;
+	text-align:center;
+	color:#a0a0a0;
+	font-size:12px;	
+}
+
+
+
+/*内容*/
+.left-bar {
+	width:620px;
+	padding-right:40px;
+}
+
+.text-list li {
+	padding-top:48px;
+	padding-bottom:27px;
+}
+
+.text-hd {
+	margin-bottom:40px;
+}
+
+.text-hd h3 {
+	padding-bottom:11px;
+	border-bottom:1px solid #ccc;
+}
+
+.text-hd h3 a {
+	font-size:21px;
+	color:#32639a;	
+}
+
+.text-attr {
+	overflow:hidden;
+	margin-top:22px;
+	color:#787878;
+}
+
+.text-des {
+	line-height:21px;
+	text-indent:2em;
+	margin-bottom:20px;
+	color:#787878;
+}
+
+/*右*/
+.right-bar {
+	width:280px;
+	background:#fff;	
+}
+
+.search {
+	width:280px;
+	height:80px;
+	background:url(../images/blog_search_bg.png) no-repeat;
+}
+
+.right-cont {
+	line-height:21px;
+	padding:0 30px 58px;
+	border-left:1px solid #ccc;	
+}
+
+.right-cont h4 {
+	font-size:20px;
+	padding:22px 0;	
+}
+
+.right-cont h4 a {
+	color:#32639a;
+}
+
+.right-cont p {
+	color:#787878;	
+}
+
+.right-cont li {
+	height:35px;
+	line-height:35px;
+	border-bottom:1px dashed #ccc;
+}
+
+.right-cont li a {
+	color:#4486c7;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

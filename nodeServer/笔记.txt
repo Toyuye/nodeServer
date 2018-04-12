@@ -1,0 +1,251 @@
+﻿nodeJs:
+	干嘛的： 后台语言，类似： php / .net  / JAVA
+	特点： 用js写后台、全栈
+	优势：
+		性能：  1 node    86台
+		方便：	入门难度低、BAT都在用
+	缺点：
+		服务器提供少，有用学习资料少，对程序要求高
+---------------------------------------------------------------------------
+
+PHP： wamp   window aphche mysql php
+java： jdk
+nodejs： https://nodejs.org/en/
+版本：
+	v.6.11.1 LTS	长时间支持（稳定版）
+	V.8.1.4 current 最新
+
+	X(主).x(子).o(修正)
+		v6.8.1	 非稳定版本
+		v6.8.2   稳定版本  偶数
+		v6.8.4	 
+下载+安装（一路下一步)
+	https://nodejs.org/en/
+	npm.taobao.org	镜像安装
+------------------------------------------------------------------------
+编写：nodejs
+	IDE: webstorm 、 sublime 、 atom 、 vsc 、 dw 、 hbuilder 、 。。。。
+	node命令行 ：  node 回车	测试
+运行：命令行	终端
+	dos: 命令行(dos)	win+r -> cmd -> dos..
+		dir 查看
+		cls 清除屏幕
+		cd 目录
+		cd .. 上一级
+		cd\  退到根
+		
+
+		/w 横屏查看 /a  查隐藏 /s 通盘
+		dir *.jpg 
+
+		node 文件.js
+	git: 命令行(linux)
+		ls 查看
+		clear 清除屏幕
+		cd 目录
+		cd .. 上一级
+		node 文件.js
+	IDE: run 
+	编辑器: dos环境
+	node命令行 ：  node 回车	测试
+
+	IDE	+	run  √
+	编辑器 + dos(内部)
+------------------------------------------------------------------------
+
+注意：
+	node 就是js
+	bom/dom 不能用   ECMA 可用
+	学node目标:
+		文件、数据、服务（web、库）
+------------------------------------------------------------------------
+模块：都需要引入
+
+http 模块  搭建web服务器 ， 响应浏览器的请求
+理论：是个协议、服务器和浏览器都要遵守
+	服务器： 电脑
+	服务: 
+		web服务器:	apache , ngnix , tomcat ....
+		数据库：SQLserver, mysql, mongoDb 
+		后台管理：php , java , nodejs  (搭建web服务器，访问数据库，响应浏览器请求)
+搭建web服务器:
+	var httpObj = http.createServer(fn(req,res){
+		每次服务被访问时调用
+		req: 浏览器-》服务器
+			req.url 返回请求地址	xx.html xx?a=1#titel
+			req.on('data/end')		.com/aaa
+		res: 服务器->浏览器    	
+			res.write('字符/buffer')
+	})
+
+	httpObj.listen(端口，地址，回调(){		对服务监听
+		执行一次
+	})
+
+	端口： 127.0.0.1:10000
+		合法端口1-65535		1024一下的是系统端口
+	res.writeHead(200,{'Content-Type':'text/html;charset=utf-8'});//响应头
+--------------------------------------------------------------------------------
+
+fs模块	file system
+	fs.readFile('路径/文件名.文件后缀名',(err,data)=>{
+		err 错误
+		data 数据
+	})
+	fs.wirteFile('路径/文件名.文件后缀名',(err,data)=>{
+		err 错误
+		data 数据
+	}
+
+--------------------------------------------------------------------------------
+url 模块  处理字符url地址
+	let urlLib = require('url')
+
+	http://www.baidu.com/app/bulala.html?a=1&b=2#title
+
+	urlLib.parse(str) str->obj
+	  protocol: null,  协议	http
+	  slashes: null, 是否使用双斜线	//
+	  auth: null,  作者
+	  host: null,	主机名 www.baidu.com
+	  port: null,   端口 80
+	  hostname: null, 主机名 www.baidu.com
+	  hash: null,  哈希 #title
+	  search: '?user=asdff&content=23423434', a=1&b=2
+	  query: { user: 'asdff', content: '23423434' }, 
+	  pathname: '/aaa', 路径
+	  path: '/aaa?user=asdff&content=23423434', 路径 
+	  href: '/aaa?user=asdff&content=23423434' 
+
+	urlLib.parse(str,true) str->obj
+	urlLib.format(obj) obj->str
+--------------------------------------------------------------------------------
+
+querystring 模块  处理数据形式的字符
+
+	let querystring=require('querystring')
+	querystring.parse(str)  str-> obj
+	querystring.stringify(obj)  obj -> str
+--------------------------------------------------------------------------------
+处理GET请求:
+	req.url -> 数据部分拿出来(url模块)
+处理POST请求
+	let str='';
+	req.on('data',(chunk)=>{
+		拼接 , 数据大小会出发多次
+		str+=chunk;
+	})
+	req.on('end',()=>{
+		处理str 
+		str -> obj   用到querystring
+	})
+--------------------------------------------------------------------------------
+ajax请求处理:
+	get 		/	 post 对于node来说
+	req.url    		 req.on('data/end')
+------------------------------------------------------------------
+总结：
+	前端get/post/ajax/jsonp,后端来说都是http请求 req.url req.on('data/end')
+------------------------------------------------------------------
+
+
+模块引入优先级
+ 不加路径指示时
+	1. 系统模块
+	2. node_modules
+commonJS:
+	模块化： seajs/requireJs
+			 require module exports
+			 define(funtion(require,module,exports){
+			 	//...
+			 	exports.a=..
+			 	module.exports=..
+			 	require('.///....')
+			 })
+commonJS 是个规范	nodejs webpack 是个实现
+ECMA 是个规范		js as
+
+------------------------------------------------------------------
+
+npm:
+	干嘛的：安装模块（前后台包), 自动解决模块自身依赖
+	类似：bower yarn 
+	安装到全局: 系统目录下, 任何目录都可以访问到这个包
+		npm install 包名 -g
+		npm uninstall 包名 -g
+	安装到本地: 项目目录， 在项目里面引入并使用
+		npm install 包名
+		npm uninstall 包名
+		npm install 包名@x.x.x 指定版本
+	npm list 查看已安装
+	npm info 包名 看历史版本
+	npm oudated 版本变化(列出有变化)
+
+	包管理package.json
+		创建package.json:	
+		dependencies  项目依赖 	  npm install 包名 --save
+		devDependencies 开发依赖  上线就不需要了
+			npm install 包名 --save-dev
+			npm install 包名 -D
+
+		^x.x.x  ^约束
+		x.~x.x  保持前不变，后面找最新
+		*		装最新
+	选择源：
+		npm install nrm -g   
+		nrm ls 查看所有源
+		nrm test 查看所有源的速度、状态
+		nrm use 源名  切换源
+	模块下载失败:
+		报错是快速的：node_modules 删除，再装
+		精度条卡（超过5分钟) , ctrl+c -> npm uninstall 包->npm cache clean->npm install包
+	发布自个的包到npm，供其他下载
+		1. 注册npm账号
+		2. 登录
+			npm login-> username/password/email
+		3. 创建包目录
+			创建package.json 管理包-> 规定入口文件index.js(编写+暴露)
+		4. 发布
+			npm publish  
+			注意：一定要在包目录去发布|一定要在npm源下|要登录|包名不要和npm重复
+				包名设定： package.json里面 修改name
+			更新: npm publish ++ 一下 版本号
+		5.	删除包
+			npm unpublish
+---------------------------------------------------------------------------------
+nodejs：做服务（文件:静态页面托管/数据:数据库mysql->mongoDb/代理:nodejs帮你去其他域名抓数据)
+---------------------------------------------------------------------------------
+库：
+	nodejs: 第一天 原生	
+	express:   ~~ 原生js下面的jquery
+		干嘛的：nodejs 框架,工作不用基础做起,简单化
+		类似：koa
+	安装:	npm install express -D
+	使用：
+		创建web服务器
+			let server = express()
+		响应请求:
+			server.use(地址,回调(req,res){
+				收到 get / post / ... 通吃
+				req.method  表单提交方式  POST GET ...
+			})	
+			server.get(地址,回调(req,res){		get请求
+				req.query   返回 get提交的数据
+			})	
+			server.post(地址,回调(req,res){		post 请求
+				req.body 返回 post提交数据 注意：需要中间件
+			})	
+		静态页面托管:
+			server.use(express.static('./www'));
+	express和原生
+		express: 对原生进行二次封装，不完全一样，非侵入式（保留原生),增强功能
+		原生：res.write(string|buffer)    
+		exprees: res.send() == write+end  可以发送对象
+			
+	中间件：就是流水线上一个环节，配合use来配置，是express的亮点
+		express-static 挂了 
+		body-parser   获取body数据
+---------------------------------------------------------------------------
+
+
+
